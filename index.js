@@ -3,6 +3,7 @@ const { stringify } = require('json5');
 class hashMap {
   constructor() {
     this.bucketSize = 16;
+    this.buckets = new Array(bucketSize).fill(null).map(() => []);
   }
 
   hash(key) {
@@ -14,6 +15,17 @@ class hashMap {
     for (let i = 0; i < key.length; i++) {
       hashCode = primeNumber * hashCode + key.charCodeAt(i);
     }
-    return hashCode;
+    return hashCode % this.bucketSize;
+  }
+
+  set(key, value) {
+    const index = this.hash(key);
+    const bucket = this.buckets[index];
+    for (const pair of bucket) {
+      if (pair.key === key) {
+        pair.value = value;
+        return;
+      }
+    }
   }
 }
