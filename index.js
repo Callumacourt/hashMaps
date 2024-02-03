@@ -89,4 +89,17 @@ class HashMap {
   clear() {
     this.buckets.splice(0, this.buckets.length);
   }
+
+  keys() {
+    const keys = [];
+    for (let i = 0; i < this.buckets.length; i += 1) {
+      const bucket = this.buckets[i];
+      for (const pair of bucket) {
+        if (pair.key) {
+          keys.push(pair.key);
+        }
+      }
+    }
+    return keys;
+  }
 }
