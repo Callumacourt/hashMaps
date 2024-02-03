@@ -85,4 +85,10 @@ class HashMap {
     }
     return keys;
   }
+
+  clear() {
+    for (let i = 0; i < this.buckets.length; i++) {
+      this.buckets[i].length = 0;
+    }
+  }
 }
