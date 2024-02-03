@@ -42,4 +42,18 @@ class HashMap {
       console.log(pair.value);
     }
   }
+
+  has(key) {
+    const index = this.hash(key);
+    if (!this.buckets[index]) {
+      return false;
+    }
+    const bucket = this.buckets[index];
+    for (const pair of buckets) {
+      if (pair.key === key) {
+        return true;
+      }
+    }
+    return false;
+  }
 }
