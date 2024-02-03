@@ -72,4 +72,17 @@ class HashMap {
     }
     return false;
   }
+
+  length() {
+    let keys = 0;
+    for (let i = 0; i < this.buckets.length; i += 1) {
+      const bucket = this.buckets[i];
+      for (const pair of bucket) {
+        if (pair.key) {
+          keys += 1;
+        }
+      }
+    }
+    return keys;
+  }
 }
