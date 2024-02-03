@@ -1,9 +1,9 @@
 const { stringify } = require('json5');
 
-class hashMap {
+class HashMap {
   constructor() {
     this.bucketSize = 16;
-    this.buckets = new Array(bucketSize).fill(null).map(() => []);
+    this.buckets = new Array(this.bucketSize).fill(null).map(() => []);
   }
 
   hash(key) {
@@ -26,6 +26,20 @@ class hashMap {
         pair.value = value;
         return;
       }
+    }
+    bucket.push({ key, value });
+  }
+
+  get(key) {
+    const index = this.hash(key);
+
+    if (!this.buckets[index]) {
+      return null;
+    }
+
+    const bucket = this.buckets[index];
+    for (const pair of bucket) {
+      console.log(pair.value);
     }
   }
 }
