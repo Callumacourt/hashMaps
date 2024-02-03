@@ -102,4 +102,17 @@ class HashMap {
     }
     return keys;
   }
+
+  values() {
+    const values = [];
+    for (let i = 0; i < this.buckets.length; i += 1) {
+      const bucket = this.buckets[i];
+      for (const pair of bucket) {
+        if (pair.value) {
+          values.push(pair.value);
+        }
+      }
+    }
+    return values;
+  }
 }
