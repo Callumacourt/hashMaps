@@ -115,4 +115,18 @@ class HashMap {
     }
     return values;
   }
+
+  entries() {
+    const keysValues = [];
+    for (let i = 0; i < this.buckets.length; i += 1) {
+      const bucket = this.buckets[i];
+      for (const pair of bucket) {
+        let tmp = [];
+        tmp.push(pair.key);
+        tmp.push(pair.value);
+        keysValues.push(tmp);
+      }
+    }
+    return keysValues;
+  }
 }
